@@ -25,4 +25,10 @@ public class LottoController {
         lottoService.saveLottoNumbers(numbers);
         return ResponseEntity.ok(Map.of("numbers", numbers));
     }
+
+    @PostMapping("/testbatch")
+    public ResponseEntity<String> testBatch() {
+        lottoService.processLottoWinners();
+        return ResponseEntity.ok("배치 작업이 성공적으로 실행되었습니다.");
+    }
 }

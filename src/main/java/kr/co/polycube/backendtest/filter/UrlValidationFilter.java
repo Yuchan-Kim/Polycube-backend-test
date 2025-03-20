@@ -19,6 +19,13 @@ public class UrlValidationFilter implements Filter {
          HttpServletRequest req = (HttpServletRequest) request;
          HttpServletResponse res = (HttpServletResponse) response;
          String url = req.getRequestURI();
+         
+         // H2 콘솔 경로는 필터링하지 않고 통과
+         if (url.contains("/h2-console")) {
+             chain.doFilter(request, response);
+             return;
+         }
+         
          String query = req.getQueryString();
          if (query != null && !query.isEmpty()) {
              url += "?" + query;

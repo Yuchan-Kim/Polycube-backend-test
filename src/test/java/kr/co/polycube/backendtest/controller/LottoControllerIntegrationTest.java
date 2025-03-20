@@ -20,8 +20,8 @@ public class LottoControllerIntegrationTest {
     @Test
     public void testGenerateLottoNumbers() throws Exception {
         mockMvc.perform(post("/lottos"))
-               .andExpect(status().isOk())
-               .andExpect(jsonPath("$.numbers").isArray())
-               .andExpect(jsonPath("$.numbers.length()").value(6));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.numbers").isArray())
+                .andExpect(jsonPath("$.numbers.length()").value(6));
     }
 }
